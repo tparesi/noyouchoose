@@ -12,40 +12,42 @@
 
 
 ### Database
-
-User            |   Data Type   | 
+User            |   Data Type   |
 ----------------|---------------|-------
-name            |               |
-phone_number    |               |
-password_digest |               |
+name            |   string      |
+phone_number    |   string      |
+password_digest |   string      |
 
-Plan
------
-  location
-  time
-  min_price
-  max_price
 
-Cuisine
---------
-  title
+Session       |   Data Type   | Notes
+--------------|---------------|-------
+user_id       |  integer      | foreign key for users
+token         |  string       |
 
-Restaurant
-------------
-  yelp_id
 
-UsersPlans
------------
-  user_id
-  plan_id
+Plan            |   Data Type   | Notes
+----------------|---------------|-------
+zipcode         |  string       | for location purposes
+time            |  string       |
+min_price       |  integer      | number between 1 & 5
+max_price       |  integer      | number between 1 & 5
 
-PlansCuisines
--------------
-  plan_id
-  cuisine_id
+Cuisine   |  Data Type
+----------|---------------
+title     |  string
 
-Rights #yes'
--------------
-  user_id
-  plan_id
-  rest_id
+UsersPlans    |  Data Type   | Notes
+--------------|--------------|----------------------
+user_id       |  integer     | foreign key for user
+plan_id       |  integer     | foreign key for plan
+
+PlansCuisines |  Data Type   | Notes
+--------------|--------------|---------
+plan_id       |  integer     | foreign key for plan
+cuisine_id    |  integer     | foreign key for cuisine
+
+RightSwipe    | Data Type    | Notes
+--------------|--------------|-------------------------
+user_id       | integer      | foreign key for users
+plan_id       | integer      | foreign key for plans
+restaurant_id | integer      | foreign key for restaurant, points to yelp api
