@@ -20,22 +20,20 @@ phone_number    |   string      |
 password_digest |   string      |
 
 
-Plan            |   Data Type   |
+Plan            |   Data Type   | Notes
 ----------------|---------------|-------
-longitude       | 
-latitude
-radius
-time
-min_price
-max_price
+zipcode         |  string       | for location purposes
+time            |  string       |
+min_price       |  integer      | number between 1 & 5
+max_price       |  integer      | number between 1 & 5
 
-Cuisine
---------
-  title
+Cuisine   |  Data Type
+----------|---------------
+title     |  string
 
-Restaurant
-------------
-  yelp_id
+Restaurant     | Data Type
+---------------|-------------
+yelp_id        | integer
 
 UsersPlans
 -----------
