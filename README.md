@@ -31,10 +31,6 @@ Cuisine   |  Data Type
 ----------|---------------
 title     |  string
 
-Restaurant     | Data Type
----------------|-------------
-yelp_id        | integer
-
 UsersPlans    |  Data Type   | Notes
 --------------|--------------|----------------------
 user_id       |  integer     | foreign key for user
@@ -49,4 +45,4 @@ RightSwipe    | Data Type    | Notes
 --------------|--------------|-------------------------
 user_id       | integer      | foreign key for users
 plan_id       | integer      | foreign key for plans
-restaurant_id | integer      | foreign key for restaurant
+restaurant_id | integer      | foreign key for restaurant, points to yelp api
