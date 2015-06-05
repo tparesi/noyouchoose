@@ -20,6 +20,12 @@ phone_number    |   string      |
 password_digest |   string      |
 
 
+Session       |   Data Type   | Notes
+--------------|---------------|-------
+user_id       |  integer      | foreign key for users
+token         |  string       | 
+
+
 Plan            |   Data Type   | Notes
 ----------------|---------------|-------
 zipcode         |  string       | for location purposes
