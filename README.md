@@ -13,18 +13,21 @@
 
 ### Database
 
-User            |   Data Type   | 
+User            |   Data Type   |
 ----------------|---------------|-------
-name            |               |
-phone_number    |               |
-password_digest |               |
+name            |   string      |
+phone_number    |   string      |
+password_digest |   string      |
 
-Plan
------
-  location
-  time
-  min_price
-  max_price
+
+Plan            |   Data Type   |
+----------------|---------------|-------
+longitude       | 
+latitude
+radius
+time
+min_price
+max_price
 
 Cuisine
 --------
