@@ -13,11 +13,11 @@
 
 ### Database
 
-User
------
-  name
-  phone_number
-  password_digest
+User            |   Data Type   | 
+----------------|---------------|-------
+name            |               |
+phone_number    |               |
+password_digest |               |
 
 Plan
 -----
