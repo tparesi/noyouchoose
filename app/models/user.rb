@@ -4,4 +4,5 @@ class User < ActiveRecord::Base
 
   has_many :users_plans
   has_many :plans, through: :users_plans
+  has_many :sessions
 end
