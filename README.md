@@ -35,18 +35,18 @@ Restaurant     | Data Type
 ---------------|-------------
 yelp_id        | integer
 
-UsersPlans
------------
-  user_id
-  plan_id
+UsersPlans    |  Data Type   | Notes
+--------------|--------------|----------------------
+user_id       |  integer     | foreign key for user
+plan_id       |  integer     | foreign key for plan
 
-PlansCuisines
--------------
-  plan_id
-  cuisine_id
+PlansCuisines |  Data Type   | Notes
+--------------|--------------|---------
+plan_id       |  integer     | foreign key for plan
+cuisine_id    |  integer     | foreign key for cuisine
 
-Rights #yes'
--------------
-  user_id
-  plan_id
-  rest_id
+RightSwipe    | Data Type    | Notes
+--------------|--------------|-------------------------
+user_id       | integer      | foreign key for users
+plan_id       | integer      | foreign key for plans
+restaurant_id | integer      | foreign key for restaurant
