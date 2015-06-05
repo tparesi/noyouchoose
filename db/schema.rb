@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150605211304) do
+ActiveRecord::Schema.define(version: 20150605213236) do
+
+  create_table "cuisines", force: :cascade do |t|
+    t.string   "title",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "plans", force: :cascade do |t|
     t.string   "zipcode",                null: false
@@ -21,6 +27,17 @@ ActiveRecord::Schema.define(version: 20150605211304) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "plans_cuisines", force: :cascade do |t|
+    t.integer  "plan_id",    null: false
+    t.integer  "cuisine_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "plans_cuisines", ["cuisine_id"], name: "index_plans_cuisines_on_cuisine_id"
+  add_index "plans_cuisines", ["plan_id", "cuisine_id"], name: "index_plans_cuisines_on_plan_id_and_cuisine_id", unique: true
+  add_index "plans_cuisines", ["plan_id"], name: "index_plans_cuisines_on_plan_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "phone_number",    null: false
