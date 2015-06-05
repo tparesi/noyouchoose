@@ -14,31 +14,38 @@
 ### Database
 
 User
+-----
   name
   phone_number
   password_digest
 
 Plan
+-----
   location
   time
   min_price
   max_price
 
 Cuisine
+--------
   title
 
 Restaurant
+------------
   yelp_id
 
 UsersPlans
+-----------
   user_id
   plan_id
 
 PlansCuisines
+-------------
   plan_id
   cuisine_id
 
 Rights #yes'
+-------------
   user_id
   plan_id
   rest_id
