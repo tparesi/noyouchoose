@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150605214244) do
+ActiveRecord::Schema.define(version: 20150609212748) do
 
   create_table "cuisines", force: :cascade do |t|
     t.string   "title",      null: false
@@ -39,6 +39,25 @@ ActiveRecord::Schema.define(version: 20150605214244) do
   add_index "plans_cuisines", ["plan_id", "cuisine_id"], name: "index_plans_cuisines_on_plan_id_and_cuisine_id", unique: true
   add_index "plans_cuisines", ["plan_id"], name: "index_plans_cuisines_on_plan_id"
 
+  create_table "potential_restaurants", force: :cascade do |t|
+    t.integer  "restaurant_id", null: false
+    t.integer  "plan_id",       null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "potential_restaurants", ["plan_id"], name: "index_potential_restaurants_on_plan_id"
+  add_index "potential_restaurants", ["restaurant_id", "plan_id"], name: "index_potential_restaurants_on_restaurant_id_and_plan_id", unique: true
+  add_index "potential_restaurants", ["restaurant_id"], name: "index_potential_restaurants_on_restaurant_id"
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string   "yelp_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "restaurants", ["yelp_id"], name: "index_restaurants_on_yelp_id"
+
   create_table "sessions", force: :cascade do |t|
     t.integer  "user_id",    null: false
     t.integer  "token",      null: false
@@ -48,6 +67,17 @@ ActiveRecord::Schema.define(version: 20150605214244) do
 
   add_index "sessions", ["token"], name: "index_sessions_on_token", unique: true
   add_index "sessions", ["user_id"], name: "index_sessions_on_user_id"
+
+  create_table "swipe_rights", force: :cascade do |t|
+    t.integer  "user_id",                 null: false
+    t.integer  "potential_restaurant_id", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "swipe_rights", ["potential_restaurant_id", "user_id"], name: "index_swipe_rights_on_potential_restaurant_id_and_user_id", unique: true
+  add_index "swipe_rights", ["potential_restaurant_id"], name: "index_swipe_rights_on_potential_restaurant_id"
+  add_index "swipe_rights", ["user_id"], name: "index_swipe_rights_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "phone_number",    null: false

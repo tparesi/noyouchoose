@@ -46,8 +46,17 @@ PlansCuisines |  Data Type   | Notes
 plan_id       |  integer     | foreign key for plan
 cuisine_id    |  integer     | foreign key for cuisine
 
-RightSwipe    | Data Type    | Notes
---------------|--------------|-------------------------
-user_id       | integer      | foreign key for users
-plan_id       | integer      | foreign key for plans
-restaurant_id | integer      | foreign key for restaurant, points to yelp api
+
+PotentialRestaurants | Data Type   | Notes
+---------------------|-------------|---------
+restaurant_id        | integer     | foreign key for restaurant
+plan_id              | integer     | foreign key for plans
+
+Restaurant    |  Data Type     | Notes
+--------------|----------------|----------
+yelp_id       |  string        | refers to yelp api
+
+RightSwipe              | Data Type    | Notes
+------------------------|--------------|-------------------------
+user_id                 | integer      | foreign key for users
+potential_restaurant_id | integer      | foreign key for potential restaurants
