@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150609212748) do
+=======
+ActiveRecord::Schema.define(version: 20150605220031) do
+>>>>>>> c59e085c8865b752a160151e6ab263ad6a0ccfa1
 
   create_table "cuisines", force: :cascade do |t|
     t.string   "title",      null: false
@@ -83,10 +87,11 @@ ActiveRecord::Schema.define(version: 20150609212748) do
     t.string   "phone_number",    null: false
     t.string   "name",            null: false
     t.string   "password_digest", null: false
-    t.datetime "created_at",      null: false
+     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
+  add_index "users", ["name"], name: "index_users_on_name", unique: true
   add_index "users", ["phone_number"], name: "index_users_on_phone_number", unique: true
 
   create_table "users_plans", force: :cascade do |t|
