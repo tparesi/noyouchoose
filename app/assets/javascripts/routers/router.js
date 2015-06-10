@@ -1,5 +1,5 @@
 NYC.Routers.Router = Backbone.Router.extend({
-  initalize: function(options) {
+  initialize: function(options) {
     this.$rootEl = options.$rootEl;
   },
 
@@ -10,11 +10,12 @@ NYC.Routers.Router = Backbone.Router.extend({
   },
 
   homepage: function() {
-    
+
   },
 
   newPlan: function() {
-
+    var newPlan = new NYC.Views.NewPlan();
+    this._swapView(newPlan);
   },
 
   showPlan: function() {

@@ -4,8 +4,7 @@ window.NYC = {
   Views: {},
   Routers: {},
   initialize: function() {
-    new NYC.Routers.Router({
-      $rootEl: $("#main"),
-    });
+    this.router = new NYC.Routers.Router({ $rootEl: $("#main")});
+    Backbone.history.start();
   }
 };
