@@ -6,19 +6,16 @@ class Api::RestaurantsController < ApplicationController
       category_filter: restaurant_params[:categories].join(","),
       radius_filter: 3000
     }
-    # fail
     @restaurants = Yelp.client.search(restaurant_params[:location], query_params)
-    render json: @restaurants
+    render :index
   end
 
   def filter
     render :form
   end
 
-
-
   def restaurant_params
-    params.permit(:location, categories:[])
+    params.permit(:location, :format, categories:[])
   end
 
 end
