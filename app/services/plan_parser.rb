@@ -17,8 +17,6 @@ class PlanParser
     @params[:friend_ids].each do |id|
       @plan.users_plans.create(user_id: id)
     end
-
-    @plan.users_plans.create(user_id: current_user.id)
   end
 
   def potential_restaurants
