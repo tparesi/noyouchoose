@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
     unless user
       user = User.create!(
             provider: auth_hash[:provider],
-            uid: auth_hash[:uid])
+            uid: auth_hash[:uid],
+            name: auth_hash[:info][:name])
     end
 
     user
