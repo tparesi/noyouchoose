@@ -26,6 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'yelp', require: 'yelp'
 
 gem 'figaro'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 
 # Use ActiveModel has_secure_password
