@@ -2,7 +2,7 @@
 <form class="invite-friends-form">
   <% users.each(function(user) { %>
     <label><%= user.escape("name") %>
-      <input type="checkbox" name="friends[]" value="<%= user.escape("name") %>">
+      <input type="checkbox" name="friend_ids[]" value="<%= user.id %>">
     </label>
   <% }) %>
 

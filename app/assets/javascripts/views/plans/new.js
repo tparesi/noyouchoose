@@ -9,9 +9,10 @@ NYC.Views.NewPlan = Backbone.CompositeView.extend({
   makePlan: function(event) {
     event.preventDefault();
     var $detailPlan = this.$(".detail-plan-form");
+    var $inviteFriends = this.$(".invite-friends-form");
     var $filterRestaurants = this.$(".filter-restaurant-form");
     var attrs = $detailPlan.serializeJSON();
-    attrs = _.extend(attrs, $filterRestaurants.serializeJSON());
+    attrs = _.extend(attrs, $filterRestaurants.serializeJSON(), $inviteFriends.serializeJSON());
     var plan = new NYC.Models.Plan();
     plan.save(attrs, {
       success: function() {
