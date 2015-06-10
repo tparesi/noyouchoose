@@ -3,14 +3,15 @@ class RestaurantsController < ApplicationController
   def index
     query_params = {
       term: "food",
-      category_filter: restaurant_params[:categories]
+      category_filter: restaurant_params[:categories].join(","),
+      radius_filter: 3000
     }
-    fail
+    # fail
     @restaurants = Yelp.client.search(restaurant_params[:location], query_params)
     render json: @restaurants
   end
 
-  def query
+  def filter
     render :form
   end
 
