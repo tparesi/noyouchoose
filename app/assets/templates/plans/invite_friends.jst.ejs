@@ -1,4 +1,9 @@
 <h2>Invite Friends</h2>
-<p>
-  TODO: make backbone users collection/models and iterate through to make invitations
-</p>
+<form class="invite-friends-form">
+  <% users.each(function(user) { %>
+    <label><%= user.escape("name") %>
+      <input type="checkbox" name="friends[]" value="<%= user.escape("name") %>">
+    </label>
+  <% }) %>
+
+</form>
