@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-User.create!(uid: "blahblah", provider: "facebook", name: "Tommy Duek")
-User.create!(uid: "blahblah", provider: "facebook", name: "Constance Jiang")
-User.create!(uid: "blahblah", provider: "facebook", name: "Jonathan Tamboer")
-User.create!(uid: "blahblah", provider: "facebook", name: "Sennacy D. Cat")
+User.create!(uid: "blahblah1", provider: "facebook", name: "Tommy Duek")
+User.create!(uid: "blahblah2", provider: "facebook", name: "Constance Jiang")
+User.create!(uid: "blahblah3", provider: "facebook", name: "Jonathan Tamboer")
+User.create!(uid: "blahblah4", provider: "facebook", name: "Sennacy D. Cat")
