@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  resources :restaurants, only: [:index, :query]
+  resources :restaurants do
+      get "filter", on: :collection
+  end
+
 end
