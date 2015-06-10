@@ -12,8 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.serializejson
 //= require underscore
 //= require backbone
+//= require composite_view
 //= require noyouchoose
 //= require_tree ../templates
 //= require_tree ./models
