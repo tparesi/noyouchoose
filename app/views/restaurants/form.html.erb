@@ -1,0 +1,9 @@
+<form action="<%= restaurants_url %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= authenticity_token %>">
+  <input type="text" name="restaurant[location]" value="">
+
+  <checkbox label="Indian" name="restaurant[categories][]" checked="false" />
+  <checkbox label="French" name="restaurant[categories][]" checked="false" />
+  <checkbox label="Italian" name="restaurant[categories][]" checked="false" />
+
+</form>
