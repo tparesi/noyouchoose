@@ -1,9 +1,11 @@
-window.NoYouChoose = {
+window.NYC = {
   Models: {},
   Collections: {},
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+    new NYC.Routers.Router({
+      $rootEl: $("#main"),
+    });
   }
 };
