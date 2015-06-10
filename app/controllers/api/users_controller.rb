@@ -1,12 +1,12 @@
 class Api::UsersController < ApplicationController
   def index
       @users = User.all
-      render @users
+      render json: @users
     end
 
     def show
       @user = User.find(params[:id])
-      render @user
+      render json: @user
     end
 
     def create
@@ -14,7 +14,7 @@ class Api::UsersController < ApplicationController
 
       if @user.save
         login_user!(@user)
-        render @user
+        render json: @user
       else
         render json: @user.errors.full_messages, status: :unprocessable_entity
       end
