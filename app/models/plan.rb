@@ -5,4 +5,5 @@ class Plan < ActiveRecord::Base
   has_many :users, through: :users_plans
   has_many :plans_cuisines
   has_many :cuisines, through: :plans_cuisines
+  has_many :potential_restaurants 
 end
