@@ -12,6 +12,7 @@ class PlanParser
     @plan
   end
 
+  # TODO - these should really be invitations, which get approved later
   def add_friends
     @params[:friend_ids].each do |id|
       @plan.users_plans.create(user_id: id)
@@ -29,8 +30,6 @@ class PlanParser
 
   def add_potential_restaurants
     potential_restaurants.each do |restaurant_data|
-      # find or create restuarant by yelp id
-      # create potential restaurants
       restaurant = Restaurant.find_or_create_by(yelp_id: restaurant_data.id)
       @plan.potential_restaurants.create(restaurant: restaurant)
     end
