@@ -1,13 +1,11 @@
 class PlanParser
 
   # params - :name, :time, :location, categories: [], friend_ids: []
-  def initialize(params)
-    @params = params
-  end
 
-  def parse
+  def parse(params)
+    @params = params
     @plan = Plan.new({name: @params[:name], time: @params[:time]})
-    add_friends
+    # add_friends
     add_potential_restaurants
     @plan
   end
@@ -31,7 +29,7 @@ class PlanParser
   def add_potential_restaurants
     potential_restaurants.each do |restaurant_data|
       restaurant = Restaurant.find_or_create_by(yelp_id: restaurant_data.id)
-      @plan.potential_restaurants.create(restaurant: restaurant)
+      @plan.potential_restaurants.new(restaurant: restaurant)
     end
   end
 
