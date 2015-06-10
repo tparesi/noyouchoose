@@ -2,9 +2,30 @@ NYC.Views.NewPlan = Backbone.CompositeView.extend({
 
   template: JST["plans/new"],
 
-  render: function(){
+  events: {
+    "click #make-plan": "makePlan"
+  },
+
+  makePlan: function(event) {
+    event.preventDefault();
+    var $detailPlan = this.$(".detail-plan-form");
+    var $filterRestaurants = this.$(".filter-restaurants-form");
+    var attrs = $detailPlan.serializeJSON();
+    attrs = _.extend(attrs, $filterRestaurants.serializeJSON());
+    var plan = new NYC.Models.Plan();
+    plan.save(attrs, {
+      success: function() {
+
+      }
+    })
+
+  },
+
+  render: function () {
     this.$el.html(this.template());
-    this.addSubview(".choose_restaurants", new NYC.Views.FilterRestaurants());
+    this.addSubview(".detail-plan", new NYC.Views.DetailPlan());
+    this.addSubview(".invite-friends", new NYC.Views.InviteFriends());
+    this.addSubview(".filter-restaurants", new NYC.Views.FilterRestaurants());
     return this;
   }
 
