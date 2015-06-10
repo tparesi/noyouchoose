@@ -6,4 +6,5 @@ class Plan < ActiveRecord::Base
   has_many :plans_cuisines
   has_many :cuisines, through: :plans_cuisines
   has_many :potential_restaurants, inverse_of: :plan
+  has_many :pending_restaurants, through: :potential_restaurants, source: :restaurant
 end

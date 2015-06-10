@@ -5,7 +5,7 @@ class PlanParser
   def parse(params)
     @params = params
     @plan = Plan.new({name: @params[:name], time: @params[:time]})
-    # add_friends
+    add_friends
     add_potential_restaurants
     @plan
   end
@@ -13,7 +13,7 @@ class PlanParser
   # TODO - these should really be invitations, which get approved later
   def add_friends
     @params[:friend_ids].each do |id|
-      @plan.users_plans.create(user_id: id)
+      @plan.users_plans.new(user_id: id)
     end
   end
 
