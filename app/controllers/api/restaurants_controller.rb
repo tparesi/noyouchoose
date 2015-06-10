@@ -1,4 +1,4 @@
-class RestaurantsController < ApplicationController
+class Api::RestaurantsController < ApplicationController
 
   def index
     query_params = {
