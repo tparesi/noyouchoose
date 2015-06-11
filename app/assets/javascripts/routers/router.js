@@ -18,8 +18,11 @@ NYC.Routers.Router = Backbone.Router.extend({
     this._swapView(newPlan);
   },
 
-  showPlan: function() {
-
+  showPlan: function(id) {
+    var plan = new NYC.Models.Plan({id: id});
+    plan.fetch();
+    var showPlan = new NYC.Views.ShowPlan({ model: plan });
+    this._swapView(showPlan);
   },
 
   _swapView: function(view) {
