@@ -5,6 +5,7 @@ json.users @plan.users do |user|
   json.id user.id
 end
 
-json.restaurants @plan.restaurants_yelp_data do |restaurant|
+json.restaurants @unswiped_restaurants.each do |potential_restaurant|
+  restaurant = Restaurant.find(potential_restaurant.restaurant_id).yelp_data
   json.partial! 'api/restaurants/restaurant', restaurant: restaurant
 end
