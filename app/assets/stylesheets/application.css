@@ -184,10 +184,11 @@ purple: #a24664
 .plan-show > h1 {
   font-size: 50px;
   text-align: center;
+  padding: 20px;
 }
 
 .restaurant-show {
-  border: 1px solid black;
+  border-top: 1px solid black;
   padding: 10px;
 }
 

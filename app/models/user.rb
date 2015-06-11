@@ -18,4 +18,8 @@ class User < ActiveRecord::Base
 
     user
   end
+
+  def unswiped_restaurants(plan) 
+
+  end
 end
