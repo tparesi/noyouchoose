@@ -4,4 +4,5 @@ class PotentialRestaurant < ActiveRecord::Base
   belongs_to :restaurant
   belongs_to :plan
   has_many :swipe_rights, dependent: :destroy
+  has_many :swipe_lefts, dependent: :destroy
 end

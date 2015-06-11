@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :create]
     resources :plans, only: [:create, :show]
     resources :swipe_rights, only: [:create, :show]
+    resources :swipe_lefts, only: [:create, :show]
   end
 
   get "/auth/:provider/callback", to: "sessions#omniauth"

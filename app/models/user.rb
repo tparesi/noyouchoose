@@ -19,7 +19,17 @@ class User < ActiveRecord::Base
     user
   end
 
-  def unswiped_restaurants(plan) 
+  def unswiped_restaurants(plan)
+    unswiped = []
+    plan.potential_restaurants.each do |restaurant|
 
+      swiped = restaurant.swipe_rights.where('user_id = ?', id).count > 0 ||
+               restaurant.swipe_lefts.where('user_id = ?', id).count > 0
+
+      unswiped << restaurant unless swiped
+    end
+
+    unswiped
   end
+
 end

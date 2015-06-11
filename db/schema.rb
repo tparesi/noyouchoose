@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150610211720) do
+ActiveRecord::Schema.define(version: 20150611204155) do
 
   create_table "cuisines", force: :cascade do |t|
     t.string   "title",      null: false
@@ -65,6 +65,17 @@ ActiveRecord::Schema.define(version: 20150610211720) do
 
   add_index "sessions", ["token"], name: "index_sessions_on_token", unique: true
   add_index "sessions", ["user_id"], name: "index_sessions_on_user_id"
+
+  create_table "swipe_lefts", force: :cascade do |t|
+    t.integer  "user_id",                 null: false
+    t.integer  "potential_restaurant_id", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "swipe_lefts", ["potential_restaurant_id", "user_id"], name: "index_swipe_lefts_on_potential_restaurant_id_and_user_id", unique: true
+  add_index "swipe_lefts", ["potential_restaurant_id"], name: "index_swipe_lefts_on_potential_restaurant_id"
+  add_index "swipe_lefts", ["user_id"], name: "index_swipe_lefts_on_user_id"
 
   create_table "swipe_rights", force: :cascade do |t|
     t.integer  "user_id",                 null: false
