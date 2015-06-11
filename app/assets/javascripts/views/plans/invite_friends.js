@@ -8,14 +8,6 @@ NYC.Views.InviteFriends = Backbone.View.extend({
 
   template: JST["plans/invite_friends"],
 
-  // events: {
-  //   "click .friend": "toggleChecked"
-  // },
-  //
-  // toggleChecked: function (event) {
-  //
-  // },
-
   render: function () {
     var content = this.template({ users: this.collection });
     this.$el.html(content);

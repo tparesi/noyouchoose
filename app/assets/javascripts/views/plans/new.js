@@ -16,7 +16,7 @@ NYC.Views.NewPlan = Backbone.CompositeView.extend({
     var plan = new NYC.Models.Plan();
     plan.save(attrs, {
       success: function() {
-
+        Backbone.history.navigate("#/plans/" + plan.id, {trigger: true});
       }
     })
 
