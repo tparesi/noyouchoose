@@ -1,8 +1,9 @@
-<h2>Invite Friends</h2>
-<form class="invite-friends-form">
+<h2 class="header header-text">Who's Going?</h2>
+<form class="invite-friends-form group">
   <% users.each(function(user) { %>
-    <label><%= user.escape("name") %>
-      <input type="checkbox" name="friend_ids[]" value="<%= user.id %>">
+    <input type="checkbox" name="friends[]" value="<%= user.escape("name") %>" id="friend-<%= user.id %>" class="friend-checkbox">
+    <label for="friend-<%= user.id %>" class="friend">
+      <span></span><%= user.escape("name") %>
     </label>
   <% }) %>
 

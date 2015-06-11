@@ -2,8 +2,7 @@ class Api::PlansController < ApplicationController
 
   def create
     @plan = PlanParser.new().parse(plan_params)
-    @plan.user_ids = @plan.user_ids + current_user.id
-
+    @plan.user_ids << current_user.id
     if @plan.save
       render :show
     else
