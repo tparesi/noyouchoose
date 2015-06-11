@@ -1,7 +1,6 @@
 class Api::UsersController < ApplicationController
   def index
-      # @users = User.all
-      @users = User.where('id != ?', current_user.id)
+      @users = User.all
       render json: @users
     end
 
@@ -12,7 +11,6 @@ class Api::UsersController < ApplicationController
 
     def create
       @user = User.new(user_params)
-
       if @user.save
         login_user!(@user)
         render json: @user
@@ -22,7 +20,6 @@ class Api::UsersController < ApplicationController
     end
 
     protected
-
     def user_params
       self.params.require(:user).permit(:provider, :uid)
     end
