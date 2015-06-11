@@ -1,18 +1,27 @@
-<h2>Filter Restaurants</h2>
+<h2 class="header header-text">Let's Get Some Details!</h2>
 <form class="filter-restaurant-form">
-  <label>
-    Location (Neighborhood or City)
-    <input type="text" name="location" value="">
+  <label for="location" class="text-input-label location">
+    Where?<aside>*</aside>
   </label>
-  <label>Middle Eastern
-    <input type="checkbox" value="mideastern" name="categories[]" />
+  <input type="text" id="location" name="location" value="" placeholder="e.g. 'Hell's Kitchen' or 'New York City'" class="text-input-input location">
+
+  <label for="location" class="text-input-label location">
+    What Are You in the Mood For?
   </label>
 
-  <label>French
-    <input type="checkbox" value="french" name="categories[]" />
+  <input type="checkbox" name="categories[]" value="mideastern" id="mideastern" class="friend-checkbox">
+  <label for="mideastern" class="friend">
+    <span></span>Middle Eastern
   </label>
 
-  <label>Italian
-    <input type="checkbox" value="italian" name="categories[]" />
+  <input type="checkbox" name="categories[]" value="french" id="french" class="friend-checkbox">
+  <label for="french" class="friend">
+    <span></span>French
   </label>
+
+  <input type="checkbox" name="categories[]" value="italian" id="italian" class="friend-checkbox">
+  <label for="italian" class="friend">
+    <span></span>Italian
+  </label>
+
 </form>
