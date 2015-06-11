@@ -6,7 +6,6 @@ class Api::PlansController < ApplicationController
     if @plan.save
       render :show
     else
-      byebug
       render json: @plan.errors.full_messages, status: :unprocessable_entity
     end
   end
