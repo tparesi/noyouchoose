@@ -13,3 +13,122 @@
  *= require_tree .
  *= require_self
  */
+
+html, body, div, ul, li, form, input, h1, h2 {
+  border: 0;
+  margin: 0;
+  padding: 0;
+
+  font: inherit;
+  background: transparent;
+
+}
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+
+body {
+  background: black;
+  font-family: 'Lato', sans-serif;
+}
+
+#main {
+  width: 600px;
+  background: white;
+  margin: auto;
+}
+
+/*
+COLORS
+
+blue: #00adef
+red: #d72335
+grey: #e4e5e6
+purple: #a24664
+
+*/
+
+.header {
+  background: #d72335;
+  padding: 10px 0;
+}
+
+.header-text {
+  color: white;
+  font-size: 36px;
+  text-align: center;
+  font-weight: 100;
+}
+
+.header h1 > strong {
+  font-weight: 400;
+}
+
+.detail-plan-form {
+  padding: 10px 20px;
+}
+
+
+.detail-plan-form label {
+  display: block;
+  font-size: 24px;
+  padding: 10px 0;
+}
+
+.detail-plan-form label > aside {
+  display: inline;
+  color: #d72335;
+  padding-left: 5px;
+
+}
+
+
+
+.detail-plan-form input {
+  width: calc(100% - 40px);
+  padding: 10px 20px;
+  background: #e4e5e6;
+}
+
+
+.friend-checkbox {
+  display: none;
+}
+
+
+.friend-checkbox + label {
+  background: #e4e5e6;
+  float: right;
+  display: block;
+  padding: 10px 0 10px 80px;
+  width: calc(100% - 80px);
+  position: relative;
+  font-size: 18px;
+  transition: padding 1s, background 1s, width 1s, color 1s;
+}
+
+.friend-checkbox:checked + label {
+  background: #00adef;
+  padding-left: 150px;
+  width: calc(100% - 150px);
+  color: white;
+}
+
+.friend > span {
+  background: white;
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  top: 9px;
+  left: 20px;
+  transition: background 1s;
+}
+
+
+.friend-checkbox:checked + label > span {
+  background: transparent;
+}
