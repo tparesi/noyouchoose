@@ -4,7 +4,7 @@ NYC.Models.Plan = Backbone.Model.extend({
 
   parse: function(response) {
     if (response.restaurants) {
-      this.restaurants().set(response.restaurants, {parse: true});
+      this.restaurants().set(response.restaurants, { parse: true });
       delete response.restaurants;
     }
 

@@ -1,0 +1,25 @@
+<h1> <%= restaurant.get("name") %> </h1>
+
+<div class="restaurant-picture">
+  <img src=" <%= restaurant.get("image_url") %> " alt="" />
+</div>
+
+<div class="restaurant-details">
+  <p>
+    <%= restaurant.get("categories").join(", ") %>
+  </p>
+  <p>
+    <%= restaurant.get("rating") %> stars
+  </p>
+  <p>
+    <%= restaurant.get("address").join("<br>") %>
+  </p>
+  <p>
+    <a href="<%= restaurant.get("mobile_url") %>">View on Yelp</a>
+  </p>
+</div>
+
+<div class="swipes">
+  <button class="swipe-left">Swipe Left</button>
+  <button class="swipe-right">Swipe Right</button>
+</div>

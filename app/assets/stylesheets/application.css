@@ -36,6 +36,16 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+}
+
 #main {
   width: 600px;
   background: white;
@@ -169,4 +179,38 @@ purple: #a24664
 
 .make-plan:active {
 
+}
+
+.plan-show > h1 {
+  font-size: 50px;
+  text-align: center;
+}
+
+.restaurant-show {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.restaurant-show > h1 {
+  font-size: 30px;
+}
+
+.restaurant-picture {
+  float: left;
+  width: 200px;
+  height: 200px;
+}
+
+.restaurant-details {
+  float: right;
+  width: 355px;
+  padding: 10px;
+}
+
+.swipes {
+  padding: 10px;
+}
+
+.swipe-right, .swipe-left {
+  border: 1px solid black;
 }
