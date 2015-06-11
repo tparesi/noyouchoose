@@ -6,8 +6,9 @@ NYC.Views.RestaurantShow = Backbone.View.extend({
 
   className: "restaurant-show group",
 
-  initialize: function() {
+  initialize: function(options) {
     this.listenTo(this.model, "sync", this.render);
+    this.plan = options.plan
   },
 
   events: {
@@ -16,13 +17,24 @@ NYC.Views.RestaurantShow = Backbone.View.extend({
   },
 
   swipeLeft: function() {
-    // actually do something
     this.remove();
   },
 
   swipeRight: function() {
-    // actually do something
-    this.remove();
+    $.ajax({
+      url: '/api/swipe_rights',
+      method: 'POST',
+      data: {
+        swipe_right: {
+          restaurant_id: this.model.id,
+          plan_id: this.plan.id
+        }
+      },
+      dataType: 'json',
+      success: function() {
+        this.remove();
+      }.bind(this)
+    });
   },
 
   render: function() {

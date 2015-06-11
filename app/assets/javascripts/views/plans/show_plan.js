@@ -11,7 +11,10 @@ NYC.Views.ShowPlan = Backbone.CompositeView.extend({
   render: function() {
     this.$el.html(this.template({plan: this.model}));
     this.model.restaurants().forEach(function(restaurant){
-      var restaurantShow = new NYC.Views.RestaurantShow({model: restaurant});
+      var restaurantShow = new NYC.Views.RestaurantShow({
+        model: restaurant,
+        plan: this.model
+      });
       this.addSubview(".pending-restaurants", restaurantShow);
     }.bind(this));
     return this;
