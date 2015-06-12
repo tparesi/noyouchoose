@@ -12,7 +12,7 @@ class Api::SwipeRightsController < ApplicationController
 
     if @swipe.save
       if restaurant.is_match?
-        match = plan.matches.create!({ restaurant_id: restaurant.restaurant.id })
+        match = restaurant.plan.matches.create!({ restaurant_id: restaurant.restaurant.id })
         push_match(match)
       end
       render json: @swipe
