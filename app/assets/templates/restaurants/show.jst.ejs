@@ -19,10 +19,9 @@
     </li>
 
     <% restaurant.get("address").forEach(function(line) { %>
-
       <li><%= line %></li>
-
     <% }) %>
+
     <li>
       <a href="<%= restaurant.get("mobile_url") %>">View on Yelp</a>
     </li>

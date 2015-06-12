@@ -1,12 +1,12 @@
 class Api::UsersController < ApplicationController
   def index
-      @users = User.all
+      @users = User.where('id != ?', current_user.id)
       render json: @users
     end
 
     def show
       @user = User.find(params[:id])
-      render json: @user
+      render :show
     end
 
     def create
