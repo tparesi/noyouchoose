@@ -10,8 +10,9 @@ class Api::RestaurantsController < ApplicationController
     render :index
   end
 
-  def filter
-    render :form
+  def show
+    @restaurant = Restaurant.find(params[:id])
+    render :show
   end
 
   def restaurant_params

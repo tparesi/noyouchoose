@@ -1,7 +1,5 @@
 class PlanParser
 
-  # params - :name, :time, :location, categories: [], friend_ids: []
-
   def parse(params)
     @params = params
     @plan = Plan.new({name: @params[:name], time: @params[:time]})

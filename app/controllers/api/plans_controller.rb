@@ -11,11 +11,6 @@ class Api::PlansController < ApplicationController
     end
   end
 
-  # TODO - add a route to get the next page of search results...this might not
-  # be super easy
-  def page
-  end
-
   def show
     @plan = Plan.find(params[:id])
     @unswiped_restaurants = current_user.unswiped_restaurants(@plan)
