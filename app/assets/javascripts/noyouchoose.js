@@ -8,10 +8,9 @@ window.NYC = {
     Backbone.history.start();
 
     var channel = window.pusher.subscribe('matches');
-
     channel.bind('new_match', function(data) {
       alert('MATCH!!!');
     });
   }
-  
+
 };
