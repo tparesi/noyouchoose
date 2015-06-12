@@ -11,13 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150611204155) do
+ActiveRecord::Schema.define(version: 20150612181334) do
 
   create_table "cuisines", force: :cascade do |t|
     t.string   "title",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "matches", force: :cascade do |t|
+    t.integer  "restaurant_id", null: false
+    t.integer  "plan_id",       null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "matches", ["restaurant_id", "plan_id"], name: "index_matches_on_restaurant_id_and_plan_id", unique: true
 
   create_table "plans", force: :cascade do |t|
     t.string   "time",       null: false

@@ -9,6 +9,7 @@ NYC.Views.RestaurantShow = Backbone.View.extend({
   initialize: function(options) {
     this.listenTo(this.model, "sync", this.render);
     this.plan = options.plan;
+    this.planShow = options.planShow;
   },
 
   events: {
@@ -28,6 +29,8 @@ NYC.Views.RestaurantShow = Backbone.View.extend({
       },
       dataType: 'json',
       success: function() {
+        this.plan.get("restaurants").shift();
+        this.planShow.trigger("swipe");
         this.remove();
       }.bind(this)
     });
@@ -45,6 +48,8 @@ NYC.Views.RestaurantShow = Backbone.View.extend({
       },
       dataType: 'json',
       success: function() {
+        this.plan.get("restaurants").shift();
+        this.planShow.trigger("swipe");
         this.remove();
       }.bind(this)
     });

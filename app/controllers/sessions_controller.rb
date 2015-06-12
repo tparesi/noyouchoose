@@ -6,8 +6,8 @@ class SessionsController < ApplicationController
   end
 
   protected
-
   def auth_hash
     request.env['omniauth.auth']
   end
+  
 end

@@ -12,8 +12,7 @@ class Api::SwipeLeftsController < ApplicationController
     @swipe = restaurant.swipe_lefts.new(user_id: current_user.id)
 
     if @swipe.save
-      # TODO FIX THIS LATER
-      render json: {}
+      render json: @swipe
     else
       render json: @swipe.errors.full_messages
     end
