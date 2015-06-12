@@ -1,2 +1,6 @@
 json.extract! @user, :id, :uid, :name
-json.plan_ids @user.plan_ids
+
+json.plans @user.plans.each do |plan|
+  json.id plan.id
+  json.name plan.name
+end
