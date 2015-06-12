@@ -25,7 +25,7 @@ NYC.Views.ShowPlan = Backbone.CompositeView.extend({
           }.bind(this)
         });
       } else {
-        this.$(".pending-restaurants").html("Oh no! <br> You've run out of restaurants! <br> :(");
+        this.$(".pending-restaurants").html("Oh no! <br> You've run out of restaurants to swipe on! <br> :(");
         this.$(".pending-restaurants").css("height", "225px");
         this.$(".pending-restaurants").css("padding-top", "125px");
         this.$(".pending-restaurants").css("text-align", "center");
