@@ -8,5 +8,4 @@ class Plan < ActiveRecord::Base
   has_many :potential_restaurants, inverse_of: :plan
   has_many :pending_restaurants, through: :potential_restaurants, source: :restaurant
   has_many :matches
-
 end
