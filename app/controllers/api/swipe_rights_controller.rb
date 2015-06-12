@@ -12,8 +12,10 @@ class Api::SwipeRightsController < ApplicationController
     @swipe = restaurant.swipe_rights.new(user_id: current_user.id)
 
     if @swipe.save
-      # TODO FIX THIS LATER
-      render json: {}
+      if restaurant.is_match?
+        plan.matches.create({ restaurant_id: restaurant.restaurant.id })
+      end
+      render json: @swipe
     else
       render json: @swipe.errors.full_messages
     end
