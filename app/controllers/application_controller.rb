@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :logged_in?
 
+  def push_match(match)
+    Pusher.trigger('matches', 'new_match', match.to_json({}))
+  end
+
   def current_user
     return nil unless session[:session_token]
     @current_user ||= Session.find_user(session[:session_token])
