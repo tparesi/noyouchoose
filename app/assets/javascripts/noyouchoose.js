@@ -10,7 +10,13 @@ window.NYC = {
     var channel = window.pusher.subscribe('matches');
 
     channel.bind('new_match', function(data) {
-      alert(data.restaurant + ' is a match!!!');
+      var $modal = $('.modal').addClass("is-open");
+      var $modalScreen = $(".modal-screen").addClass("is-open");
+      $modal.find(".modal-message").text("Yay! You have a match. You both want to eat at " + data.restaurant);
+      window.setTimeout(function() {
+        $modal.removeClass("is-open");
+        $modalScreen.removeClass("is-open");
+      }, 5000)
     });
   }
 

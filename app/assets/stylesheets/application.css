@@ -267,3 +267,39 @@ purple: #a24664
 .facebook-login:hover {
   background-position: 0 -40px;
 }
+
+
+.modal {
+  display: none;
+  position: absolute;
+  padding: 40px;
+  background: white;
+  width: 300px;
+  height: 300px;
+  top: 100px;
+  left: calc(50% - 150px);
+  margin: auto;
+  z-index: 4;
+  border: 3px solid #d72335;
+  border-radius: 30px;
+}
+
+.modal-message {
+  font-size: 36px;
+  text-align: center;
+}
+
+.modal-screen {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(100,100,100,.5);
+  z-index: 2;
+}
+
+.modal.is-open, .modal-screen.is-open {
+  display: block;
+}
