@@ -1,5 +1,6 @@
 class Restaurant < ActiveRecord::Base
   validates :yelp_id, presence: true
+  has_many :matches
 
   def yelp_data
     restaurant_data = Yelp.client.business(self.yelp_id)
