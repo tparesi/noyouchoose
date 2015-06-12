@@ -4,6 +4,7 @@ class Api::PlansController < ApplicationController
     @plan = PlanParser.new().parse(plan_params)
     @plan.user_ids= @plan.user_ids + [current_user.id]
     if @plan.save
+      @unswiped_restaurants = current_user.unswiped_restaurants(@plan)
       render :show
     else
       render json: @plan.errors.full_messages, status: :unprocessable_entity
