@@ -42,6 +42,10 @@ img {
   display: block;
 }
 
+ul {
+  list-style: none;
+}
+
 button {
   cursor: pointer;
 }
@@ -187,11 +191,13 @@ purple: #a24664
 }
 
 .restaurant-show {
-  border-top: 1px solid black;
-  padding: 10px;
-  position: absolute;
   background: white;
-  min-height: 350px;
+  height: 500px;
+  width: 600px;
+}
+
+.restaurant-stats {
+  padding-top: 10px;
 }
 
 .restaurant-show > h1 {
@@ -199,26 +205,46 @@ purple: #a24664
 }
 
 .restaurant-picture {
-  float: left;
   width: 200px;
   height: 200px;
+  padding: 20px;
+  margin: 0 auto;
+  border: 1px solid black;
 }
 
 .restaurant-details {
-  float: right;
-  width: 355px;
-  padding: 10px;
+  float: left;
+  padding: 20px 20px 10px 20px;
+  width: 360px;
 }
 
-.swipes {
-  padding: 10px;
-}
 
 .swipe-right, .swipe-left {
-  border: 1px solid black;
   padding: 3px;
+  float: left;
+  width: 100px;
+  height: 100%;
+  background: #e4e5e6;
+}
+
+.swipe-right:hover, .swipe-left:hover {
+  background: #00adef;
 }
 
 .pending-restaurants {
   position: relative;
+}
+
+.restaurant-title {
+  text-align: center;
+}
+
+.restaurant-stats li:first-child {
+  font-size: 48px;
+}
+
+.restaurant-stats li {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.4;
 }

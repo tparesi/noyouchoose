@@ -1,25 +1,33 @@
-<h1> <%= restaurant.get("name") %> </h1>
 
-<div class="swipes">
-  <button class="swipe-left">Swipe Left</button>
-  <button class="swipe-right">Swipe Right</button>
-</div>
-
-<div class="restaurant-picture">
-  <img src=" <%= restaurant.get("image_url") %> " alt="" />
-</div>
+<button class="swipe-left">Swipe Left</button>
 
 <div class="restaurant-details">
-  <p>
-    <%= restaurant.get("categories").join(", ") %>
-  </p>
-  <p>
-    <%= restaurant.get("rating") %> stars
-  </p>
-  <p>
-    <%= restaurant.get("address").join("<br>") %>
-  </p>
-  <p>
-    <a href="<%= restaurant.get("mobile_url") %>">View on Yelp</a>
-  </p>
+  <figure class="restaurant-picture">
+    <img src=" <%= restaurant.get("image_url") %> " alt="" />
+  </figure>
+  <ul class="restaurant-stats">
+    <li>
+      <h1 class="restaurant-title"> <%= restaurant.get("name") %> </h1>
+    </li>
+
+    <li>
+      <%= restaurant.get("categories").join(", ") %>
+    </li>
+
+    <li>
+      <%= restaurant.get("rating") %> stars
+    </li>
+
+    <% restaurant.get("address").forEach(function(line) { %>
+
+      <li><%= line %></li>
+
+    <% }) %>
+    <li>
+      <a href="<%= restaurant.get("mobile_url") %>">View on Yelp</a>
+    </li>
+
+  </ul>
 </div>
+
+<button class="swipe-right">Swipe Right</button>
