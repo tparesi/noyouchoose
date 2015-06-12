@@ -10,8 +10,8 @@ window.NYC = {
     var channel = window.pusher.subscribe('matches');
 
     channel.bind('new_match', function(data) {
-      alert('MATCH!!!');
+      alert(data.restaurant + ' is a match!!!');
     });
   }
-  
+
 };
