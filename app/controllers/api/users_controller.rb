@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   def index
-      @users = User.where('id != ?', current_user.id)
+      @users = current_user.all_friends
       render json: @users
     end
 
