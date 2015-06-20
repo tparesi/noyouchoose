@@ -125,6 +125,7 @@ purple: #a24664
   width: calc(100% - 80px);
   position: relative;
   font-size: 18px;
+  border-bottom: 1px solid black;
   transition: padding 1s, background 1s, width 1s, color 1s;
 }
 
@@ -148,6 +149,17 @@ purple: #a24664
 
 .friend-checkbox:checked + label > span {
   background: transparent;
+}
+
+.invite-friend {
+  background: #e4e5e6;
+  float: right;
+  display: block;
+  padding: 15px 0 15px 20px;
+  width: calc(100% - 20px);
+  position: relative;
+  font-size: 18px;
+  cursor: pointer;
 }
 
 .filter-restaurant-form > .text-input-label {
