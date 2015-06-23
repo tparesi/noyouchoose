@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id          :integer          not null, primary key
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  provider    :string
+#  uid         :integer
+#  name        :string
+#  oauth_token :string
+#
+
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase

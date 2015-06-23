@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   def index
-      @users = current_user.all_friends
+      @users = current_user.friends
       render json: @users
     end
 
