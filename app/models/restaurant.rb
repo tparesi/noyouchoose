@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: restaurants
+#
+#  id         :integer          not null, primary key
+#  yelp_id    :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Restaurant < ActiveRecord::Base
   validates :yelp_id, presence: true
   has_many :matches

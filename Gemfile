@@ -28,7 +28,9 @@ gem 'yelp', require: 'yelp'
 gem 'figaro'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem "koala"
 
+gem 'annotate'
 gem 'backbone-on-rails'
 
 gem 'pusher'
