@@ -3,7 +3,6 @@ class Api::PlansController < ApplicationController
   def create
     @plan = PlanParser.new().parse(plan_params)
     @plan.user_ids= @plan.user_ids + [current_user.id]
-    byebug
     if @plan.save
       @unswiped_restaurants = current_user.unswiped_restaurants(@plan)
       render :show
