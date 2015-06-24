@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
 
     user_friends = []
     friends.each do |friend|
-      user_friends << User.where("uid = ?", friend["id"])
+      user_friends << User.find_by(uid: friend["id"])
     end
 
     user_friends
