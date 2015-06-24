@@ -4,10 +4,15 @@ NYC.Views.ShowPlan = Backbone.CompositeView.extend({
 
   initialize: function() {
     this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model, "sync", this.subscribeToChannel);
     this.bind('swipe', this.render);
 
-    var channel = window.pusher.subscribe('matches_for_plan_' + this.id);
+  },
 
+  className: "plan-show",
+
+  subscribeToChannel: function() {
+    var channel = window.pusher.subscribe('matches_for_plan_' + this.model.id);
     channel.bind('new_match', function(data) {
       var $modal = $('.modal').addClass("is-open");
       var $modalScreen = $(".modal-screen").addClass("is-open");
@@ -18,8 +23,6 @@ NYC.Views.ShowPlan = Backbone.CompositeView.extend({
       }, 5000);
     });
   },
-
-  className: "plan-show",
 
   render: function() {
     this.$el.html(this.template({plan: this.model}));
