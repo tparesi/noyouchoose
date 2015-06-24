@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
 
   def push_match(match)
-    plan_channel = 'matches_for_plan_' + match.plan.id
+    plan_channel = 'matches_for_plan_' + match.plan.id.to_s
     Pusher.trigger(plan_channel, 'new_match', match.to_json({}))
   end
 
