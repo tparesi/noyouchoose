@@ -10,6 +10,7 @@ class PlanParser
 
   # TODO - these should really be invitations, which get approved later
   def add_friends
+    byebug
     @params[:friend_ids].each do |id|
       @plan.users_plans.new(user_id: id)
     end
