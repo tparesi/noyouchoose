@@ -40,13 +40,6 @@ class User < ActiveRecord::Base
   def friends
     @graph = Koala::Facebook::API.new(oauth_token)
     friends = @graph.get_connections("me", "friends")
-
-    user_friends = []
-    friends.each do |friend|
-      user_friends << User.where("uid = ?", friend["id"])
-    end
-
-    user_friends
   end
 
   def unswiped_restaurants(plan)
