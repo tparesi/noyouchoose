@@ -2,7 +2,7 @@ class Api::SessionsController < ApplicationController
 
   def show
     if current_user
-      render current_user
+      render json: current_user
     else
       render json: {}
     end
