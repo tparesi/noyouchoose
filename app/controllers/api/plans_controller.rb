@@ -17,6 +17,11 @@ class Api::PlansController < ApplicationController
     render :show
   end
 
+  def index
+    @plans = current_user.plans
+    render :index
+  end
+
   private
     def plan_params
       params.require(:plan).permit(:name, :time, :location, categories: [], friend_ids: [])
