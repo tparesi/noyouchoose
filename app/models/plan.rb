@@ -19,4 +19,8 @@ class Plan < ActiveRecord::Base
   has_many :potential_restaurants, inverse_of: :plan
   has_many :pending_restaurants, through: :potential_restaurants, source: :restaurant
   has_many :matches
+
+  scope :upcoming_plans, lambda { where(["time > ?", Time.now]).order(time: :desc) }
+  scope :past_plans, lambda { where(["time < ?", Time.now]).order("time DESC") }
+  scope :todays_plans, lambda {where("time >= ? AND time < ?", Date.today, Date.tomorrow)}
 end
