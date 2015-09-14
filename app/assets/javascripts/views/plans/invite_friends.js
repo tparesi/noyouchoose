@@ -18,7 +18,6 @@ NYC.Views.InviteFriends = Backbone.View.extend({
   },
 
   render: function () {
-    debugger
     var content = this.template({ users: this.collection });
     this.$el.html(content);
     return this;
