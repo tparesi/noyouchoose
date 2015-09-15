@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150703213302) do
+ActiveRecord::Schema.define(version: 20150915180716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,18 @@ ActiveRecord::Schema.define(version: 20150703213302) do
 
   add_index "swipe_rights", ["potential_restaurant_id"], name: "index_swipe_rights_on_potential_restaurant_id", using: :btree
   add_index "swipe_rights", ["user_id"], name: "index_swipe_rights_on_user_id", using: :btree
+
+  create_table "swipes", force: :cascade do |t|
+    t.integer  "user_id",                 null: false
+    t.integer  "potential_restaurant_id", null: false
+    t.boolean  "swipe_right?",            null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "swipes", ["potential_restaurant_id", "user_id"], name: "index_swipes_on_potential_restaurant_id_and_user_id", unique: true, using: :btree
+  add_index "swipes", ["potential_restaurant_id"], name: "index_swipes_on_potential_restaurant_id", using: :btree
+  add_index "swipes", ["user_id"], name: "index_swipes_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",            null: false
