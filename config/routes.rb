@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :restaurants, only: [:show]
     resources :swipe_rights, only: [:create, :show]
     resources :swipe_lefts, only: [:create, :show]
+    resources :swipes, only: [:create, :show]
   end
 
   get "/auth/:provider/callback", to: "sessions#omniauth"
