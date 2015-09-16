@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :plans, only: [:create, :show, :index]
     resources :restaurants, only: [:show]
     resources :swipes, only: [:create, :show]
+    resources :potential_restaurants, only: [:show]
   end
 
   get "/auth/:provider/callback", to: "sessions#omniauth"
