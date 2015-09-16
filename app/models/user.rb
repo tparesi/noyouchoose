@@ -19,7 +19,6 @@ class User < ActiveRecord::Base
   has_many :swipes
 
   def self.find_or_create_by_auth_hash(auth_hash)
-    byebug
     user = User.find_by(
             provider: auth_hash[:provider],
             uid: auth_hash[:uid])
