@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_many :swipes
 
   def self.find_or_create_by_auth_hash(auth_hash)
+    byebug
     user = User.find_by(
             provider: auth_hash[:provider],
             uid: auth_hash[:uid])
@@ -28,6 +29,7 @@ class User < ActiveRecord::Base
             provider: auth_hash[:provider],
             uid: auth_hash[:uid],
             name: auth_hash[:info][:name],
+            profile_picture_url: auth_hash[:info][:image],
             oauth_token:  auth_hash[:credentials][:token])
     end
 
