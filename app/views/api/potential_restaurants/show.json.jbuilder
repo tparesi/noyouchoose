@@ -1,7 +1,5 @@
 json.restaurant do
-  json.image_url @potential_restaurant.restaurant.yelp_data[:image_url]
-  json.name @potential_restaurant.restaurant.yelp_data[:name]
-
+  json.partial! 'api/restaurants/restaurant', restaurant: @potential_restaurant.restaurant.yelp_data
 end
 
 json.user_swipes do
