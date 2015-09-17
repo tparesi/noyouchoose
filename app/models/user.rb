@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
     friends = @graph.get_connections("me", "friends")
     friends.map do |friend|
       User.find_by(uid: friend["id"])
-    end
+    end.compact
   end
 
   def unswiped_restaurants(plan)
