@@ -317,6 +317,14 @@ purple: #a24664
   text-align: center;
 }
 
+.modal-image img {
+  width: 125px;
+  height: auto;
+  margin: 15px auto;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
 .modal-screen {
   display: none;
   position: fixed;
