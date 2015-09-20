@@ -331,3 +331,17 @@ purple: #a24664
 .modal.is-open, .modal-screen.is-open {
   display: block;
 }
+
+.login-page {
+  background: white;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  h1 {
+    font-size: 36px;
+    .logo {
+      color: #d72335;
+      font-weight: 300;
+    }
+  }
+}

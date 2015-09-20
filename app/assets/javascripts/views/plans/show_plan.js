@@ -1,8 +1,11 @@
 NYC.Views.ShowPlan = Backbone.CompositeView.extend({
+  // Model: Plan
 
   template: JST["plans/show"],
 
   initialize: function() {
+    this.model.fetch();
+
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model, "sync", this.subscribeToChannel);
     this.bind('swipe', this.render);

@@ -1,0 +1,36 @@
+<a href="#plans/new">Make a Plan</a>
+
+<section class="todays-plans">
+    <h2>Today</h2>
+    <% if (todaysPlans) { %>
+      <ul class="open">
+        <% _.each(todaysPlans, function(plan) { %>
+          <li><a href="#plans/<%= plan.get('id') %>"><%= plan.escape("name") %></a></li>
+        <% }); %>
+      </ul>
+    <% } else { %>
+      <span>You have nothing planned for today.</span>
+    <% } %>
+</section>
+
+<section class="upcoming-plans">
+  <h2>Upcoming Plans <a class="pseudo-link toggle-close">&#x2304</a></h2>
+  <ul class="closed">
+    <% _.each(upcomingPlans, function (plan) { %>
+      <li><a href="#plans/<%= plan.get('id') %>"><%= plan.escape("name") %></a></li>
+    <% }); %>
+  </ul>
+</section>
+
+<section class="past-plans">
+  <h2>Past Plans <a class="pseudo-link toggle-close">&#x2304</a></h2>
+  <% if (pastPlans) { %>
+    <ul class="closed">
+      <% _.each(pastPlans, function (plan) { %>
+        <li><a href="#plans/<%= plan.get('id') %>"><%= plan.escape("name") %></a></li>
+      <% }); %>
+    </ul>
+  <%  } else { %>
+    <span>You have no past plans.</span>
+  <% }%>
+</section>
