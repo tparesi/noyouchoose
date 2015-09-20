@@ -1,5 +1,8 @@
 <header class="header">
   <a href="/auth/facebook" class="facebook-login">Facebook</a>
+  <% if (NYC.CurrentUser.escape("profile_picture_url") !== "") { %>
+    <img class="profile-picture" src="<%= NYC.CurrentUser.escape("profile_picture_url") %>" alt="" />
+  <% } %>
   <h1 class="header-text">No <strong>You</strong> Choose</h1>
 </header>
 

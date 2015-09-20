@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :users_plans
   has_many :plans, through: :users_plans
   has_many :sessions, dependent: :destroy
-  has_many :swipe_rights, dependent: :destroy
+  has_many :swipes
 
   def self.find_or_create_by_auth_hash(auth_hash)
     user = User.find_by(
@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
             provider: auth_hash[:provider],
             uid: auth_hash[:uid],
             name: auth_hash[:info][:name],
+            profile_picture_url: auth_hash[:info][:image],
             oauth_token:  auth_hash[:credentials][:token])
     end
 
@@ -45,10 +46,7 @@ class User < ActiveRecord::Base
   def unswiped_restaurants(plan)
     unswiped = []
     plan.potential_restaurants.each do |restaurant|
-
-      swiped = restaurant.swipe_rights.where('user_id = ?', id).count > 0 ||
-               restaurant.swipe_lefts.where('user_id = ?', id).count > 0
-
+      swiped = restaurant.swipes.find_by(user_id: id)
       unswiped << restaurant unless swiped
     end
 

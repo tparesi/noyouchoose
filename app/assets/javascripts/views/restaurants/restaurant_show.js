@@ -19,10 +19,11 @@ NYC.Views.RestaurantShow = Backbone.View.extend({
 
   swipeLeft: function() {
     $.ajax({
-      url: '/api/swipe_lefts',
+      url: '/api/swipes',
       method: 'POST',
       data: {
-        swipe_left: {
+        swipe: {
+          swipe_type: 'left',
           restaurant_id: this.model.id,
           plan_id: this.plan.id
         }
@@ -38,10 +39,11 @@ NYC.Views.RestaurantShow = Backbone.View.extend({
 
   swipeRight: function() {
     $.ajax({
-      url: '/api/swipe_rights',
+      url: '/api/swipes',
       method: 'POST',
       data: {
-        swipe_right: {
+        swipe: {
+          swipe_type: 'right',
           restaurant_id: this.model.id,
           plan_id: this.plan.id
         }

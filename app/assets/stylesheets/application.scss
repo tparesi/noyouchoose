@@ -289,6 +289,13 @@ purple: #a24664
   background-position: 0 -40px;
 }
 
+.profile-picture {
+  width: 40px;
+  height: auto;
+  float: right;
+  margin-right: 10px;
+  border-radius: 3px;
+}
 
 .modal {
   display: none;

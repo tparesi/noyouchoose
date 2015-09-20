@@ -19,7 +19,7 @@ NYC.Views.ShowPlan = Backbone.CompositeView.extend({
     channel.bind('new_match', function(data) {
       var $modal = $('.modal').addClass("is-open");
       var $modalScreen = $(".modal-screen").addClass("is-open");
-      $modal.find(".modal-message").text("Yay! You have a match. You both want to eat at " + data.restaurant);
+      $modal.find(".modal-message").text("Yay! You have a match. You both want to eat at " + data.restaurant_name);
       window.setTimeout(function() {
         $modal.removeClass("is-open");
         $modalScreen.removeClass("is-open");

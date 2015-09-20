@@ -14,6 +14,6 @@ class Match < ActiveRecord::Base
   belongs_to :plan
 
   def to_json(options)
-    { id: id, restaurant: restaurant.yelp_data[:name] }
+    { id: id, restaurant_name: restaurant.yelp_data[:name], restaurant_img: restaurant.yelp_data[:image_url] }
   end
 end

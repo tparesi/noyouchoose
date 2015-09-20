@@ -1,17 +1,19 @@
 # == Schema Information
 #
-# Table name: swipe_lefts
+# Table name: swipes
 #
 #  id                      :integer          not null, primary key
 #  user_id                 :integer          not null
 #  potential_restaurant_id :integer          not null
+#  swipe_right?            :boolean          not null
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #
 
-class SwipeLeft < ActiveRecord::Base
-  validates :potential_restaurant_id, :user_id, presence: true
+require 'test_helper'
 
-  belongs_to :potential_restaurant
-  belongs_to :user
+class SwipeTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end
