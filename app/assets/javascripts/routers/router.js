@@ -7,6 +7,7 @@ NYC.Routers.Router = Backbone.Router.extend({
 
   routes: {
     "": "homepage",
+    "_=_": "sanitize",
     "plans/new": "newPlan",
     "plans/:id": "showPlan",
   },
@@ -14,7 +15,7 @@ NYC.Routers.Router = Backbone.Router.extend({
   homepage: function() {
     NYC.CurrentUser.fetch({
       success: function () {
-        if (NYC.CurrentUser.escape("name")) {
+        if (NYC.CurrentUser.isLoggedIn()) {
           this.planIndex();
         } else {
           this.loginPage();
@@ -26,11 +27,16 @@ NYC.Routers.Router = Backbone.Router.extend({
 
   planIndex: function () {
     console.log("plan index");
+    var currentUserPlans = new NYC.Models.PlanIndex();
+    currentUserPlans.fetch();
+    var indexPage = new NYC.Views.IndexPage({ model: currentUserPlans });
+    this._swapView(indexPage);
 
   },
 
   loginPage: function () {
-    console.log("login page");
+    var loginPage = new NYC.Views.LoginPage();
+    this._swapView(loginPage);
   },
 
   newPlan: function() {
@@ -40,9 +46,12 @@ NYC.Routers.Router = Backbone.Router.extend({
 
   showPlan: function(id) {
     var plan = new NYC.Models.Plan({id: id});
-    plan.fetch();
     var showPlan = new NYC.Views.ShowPlan({ model: plan });
     this._swapView(showPlan);
+  },
+
+  sanitize: function() {
+    Backbone.history.navigate("#")
   },
 
   _swapView: function(view) {
