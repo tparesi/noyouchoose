@@ -23,4 +23,9 @@ class Plan < ActiveRecord::Base
   scope :upcoming_plans, -> { where(["time > ?", Time.now]).order(time: :desc) }
   scope :past_plans, -> { where(["time < ?", Time.now]).order(time: :desc) }
   scope :todays_plans, -> {where("time >= ? AND time < ?", Date.today, Date.tomorrow)}
+
+  def most_agreed_upon_restaurant
+
+  end
+  
 end
