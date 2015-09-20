@@ -2,7 +2,6 @@ NYC.Routers.Router = Backbone.Router.extend({
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
     NYC.CurrentUser = new NYC.Models.CurrentUser();
-
   },
 
   routes: {
@@ -24,14 +23,12 @@ NYC.Routers.Router = Backbone.Router.extend({
     })
   },
 
-
   planIndex: function () {
     console.log("plan index");
     var currentUserPlans = new NYC.Models.PlanIndex();
     currentUserPlans.fetch();
     var indexPage = new NYC.Views.IndexPage({ model: currentUserPlans });
     this._swapView(indexPage);
-
   },
 
   loginPage: function () {
