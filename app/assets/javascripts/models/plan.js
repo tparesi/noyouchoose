@@ -16,6 +16,14 @@ NYC.Models.Plan = Backbone.Model.extend({
     return json;
   },
 
+  restaurants: function () {
+    if (!this._restaurants) {
+      this._restaurants = new NYC.Collections.Restaurants();
+    }
+
+    return this._restaurants;
+  },
+
   users: function() {
     if (!this._users) {
       this._users = new NYC.Collections.Users([]);

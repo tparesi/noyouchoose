@@ -1,5 +1,5 @@
 <ul class="plans">
   <% plans.each(function(plan) { %>
-    <li class="plan"> <%= plan.escape("name") %> </li>
+    <li class="plan"><a href="#/plans/<%= plan.id %>"><%= plan.escape("name") %></a></li>
   <% }); %>
 </ul>

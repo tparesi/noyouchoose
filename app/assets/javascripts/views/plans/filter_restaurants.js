@@ -12,7 +12,8 @@ NYC.Views.FilterRestaurants = Backbone.View.extend({
     filtered.fetch({
       data: $(event.currentTarget).parent().serializeJSON(),
       success: function(response) {
-        debugger
+        //TODO
+        console.log("figure this out");
       }
     });
   },
