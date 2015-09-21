@@ -1,8 +1,11 @@
 NYC.Views.ShowPlan = Backbone.CompositeView.extend({
+  // Model: Plan
 
   template: JST["plans/show"],
 
   initialize: function() {
+    this.model.fetch();
+
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model, "sync", this.subscribeToChannel);
     this.bind('swipe', this.render);
@@ -16,11 +19,13 @@ NYC.Views.ShowPlan = Backbone.CompositeView.extend({
     channel.bind('new_match', function(data) {
       var $modal = $('.modal').addClass("is-open");
       var $modalScreen = $(".modal-screen").addClass("is-open");
-      $modal.find(".modal-message").text("Yay! You have a match. You both want to eat at " + data.restaurant);
+      $modal.find(".modal-message").text("Yay! You have a match. You both want to eat at " + data.restaurant_name);
+      var $img = $("<img>").attr("src", data.restaurant_img);
+      $modal.find(".modal-image").html($img);
       window.setTimeout(function() {
         $modal.removeClass("is-open");
         $modalScreen.removeClass("is-open");
-      }, 5000);
+      }, 50000);
     });
   },
 

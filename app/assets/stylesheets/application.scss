@@ -289,6 +289,13 @@ purple: #a24664
   background-position: 0 -40px;
 }
 
+.profile-picture {
+  width: 40px;
+  height: auto;
+  float: right;
+  margin-right: 10px;
+  border-radius: 3px;
+}
 
 .modal {
   display: none;
@@ -310,6 +317,14 @@ purple: #a24664
   text-align: center;
 }
 
+.modal-image img {
+  width: 125px;
+  height: auto;
+  margin: 15px auto;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
 .modal-screen {
   display: none;
   position: fixed;
@@ -323,4 +338,18 @@ purple: #a24664
 
 .modal.is-open, .modal-screen.is-open {
   display: block;
+}
+
+.login-page {
+  background: white;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  h1 {
+    font-size: 36px;
+    .logo {
+      color: #d72335;
+      font-weight: 300;
+    }
+  }
 }
