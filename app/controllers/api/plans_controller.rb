@@ -1,5 +1,7 @@
 class Api::PlansController < ApplicationController
 
+  before_action :require_plan_membership, only: :show
+
   def create
     @plan = PlanParser.new().parse(plan_params)
     @plan.user_ids= @plan.user_ids + [current_user.id]
@@ -25,5 +27,11 @@ class Api::PlansController < ApplicationController
   private
     def plan_params
       params.require(:plan).permit(:name, :time, :location, categories: [], friend_ids: [])
+    end
+
+    def require_plan_membership
+      unless Plan.find(params[:id]).users.include?(current_user)
+        render 'unauthorized_page', :status => 401
+      end
     end
 end
