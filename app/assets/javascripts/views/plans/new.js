@@ -17,9 +17,11 @@ NYC.Views.NewPlan = Backbone.CompositeView.extend({
     plan.save(attrs, {
       success: function() {
         Backbone.history.navigate("#/plans/" + plan.id, {trigger: true});
+      },
+      error: function(model, response, options) {
+        alert(response.responseText);
       }
-    })
-
+    });
   },
 
   render: function () {
