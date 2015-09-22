@@ -27,5 +27,15 @@ class Plan < ActiveRecord::Base
   def most_agreed_upon_restaurant
 
   end
-  
+
+  def unswiped_restaurants(user)
+    unswiped = []
+    potential_restaurants.each do |restaurant|
+      swiped = restaurant.swipes.find_by(user_id: user.id)
+      unswiped << restaurant unless swiped
+    end
+
+    unswiped
+  end
+
 end
