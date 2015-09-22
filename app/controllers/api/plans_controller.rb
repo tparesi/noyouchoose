@@ -1,6 +1,7 @@
 class Api::PlansController < ApplicationController
 
   before_action :require_plan_membership, only: :show
+  before_action :require_invitees, only: :create
 
   def create
     @plan = PlanParser.new().parse(plan_params)
@@ -30,7 +31,13 @@ class Api::PlansController < ApplicationController
 
     def require_plan_membership
       unless Plan.find(params[:id]).users.include?(current_user)
-        render 'unauthorized_page', :status => 401
+        render json: 'unauthorized_page', status: 401
+      end
+    end
+
+    def require_invitees
+      unless plan_params[:friend_ids]
+        render json: 'you must invite at least one friend', status: 422
       end
     end
 end
