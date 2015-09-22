@@ -1,7 +1,7 @@
 class Api::PlansController < ApplicationController
 
   before_action :require_plan_membership, only: :show
-  before_action :require_invitees, only: :create
+  before_action :require_invitees, :require_cuisines, :require_location, only: :create
 
   def create
     @plan = PlanParser.new().parse(plan_params)
@@ -37,7 +37,19 @@ class Api::PlansController < ApplicationController
 
     def require_invitees
       unless plan_params[:friend_ids]
-        render json: 'you must invite at least one friend', status: 422
+        render json: ['you must invite at least one friend'], status: 422
+      end
+    end
+
+    def require_cuisines
+      unless plan_params[:categories]
+        render json: ['you must specify at least one cuisine'], status: 422
+      end
+    end
+
+    def require_location
+      if plan_params[:location].empty?
+        render json: ['you must specify a location'], status: 422
       end
     end
 end
