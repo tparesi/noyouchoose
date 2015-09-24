@@ -18,7 +18,7 @@ class Restaurant < ActiveRecord::Base
     name: restaurant_data.name,
     categories: restaurant_data.categories,
     mobile_url: restaurant_data.mobile_url,
-    image_url: restaurant_data.image_url,
+    image_url: restaurant_data.try(:image_url),
     rating: restaurant_data.rating,
     location: restaurant_data.location}
   end

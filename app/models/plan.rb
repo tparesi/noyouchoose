@@ -64,7 +64,7 @@ class Plan < ActiveRecord::Base
       self.id,
       user.id
     ]);
-    
+
     current_user_swiped_restaurant_ids = current_users.map(&:restaurant_id)
     not_current_users.select do |potential_restaurant|
       !current_user_swiped_restaurant_ids.include? potential_restaurant.restaurant_id
