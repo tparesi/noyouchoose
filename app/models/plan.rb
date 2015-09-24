@@ -65,9 +65,13 @@ class Plan < ActiveRecord::Base
       user.id
     ]);
 
-    current_user_swiped_restaurant_ids = current_users.map(&:restaurant_id)
+    current_user_swiped_restaurant_ids = Hash.new(false)
+    current_users.each do |restaurant|
+      current_user_swiped_restaurant_ids[restaurant.restaurant_id] = true
+    end
+
     not_current_users.select do |potential_restaurant|
-      !current_user_swiped_restaurant_ids.include? potential_restaurant.restaurant_id
+      !current_user_swiped_restaurant_ids[potential_restaurant.restaurant_id]
     end
   end
 
