@@ -28,14 +28,46 @@ class Plan < ActiveRecord::Base
 
   end
 
-  def unswiped_restaurants(user)
-    unswiped = []
-    potential_restaurants.each do |restaurant|
-      swiped = restaurant.swipes.find_by(user_id: user.id)
-      unswiped << restaurant unless swiped
-    end
+  # def unswiped_restaurants(user)
+  #   unswiped = []
+  #   potential_restaurants.each do |restaurant|
+  #     swiped = restaurant.swipes.find_by(user_id: user.id)
+  #     unswiped << restaurant unless swiped
+  #   end
+  #
+  #   unswiped
+  # end
 
-    unswiped
+  def unswiped_restaurants(user)
+    not_current_users = PotentialRestaurant.find_by_sql([
+     "SELECT *
+      FROM potential_restaurants
+      JOIN restaurants
+      ON potential_restaurants.restaurant_id = restaurants.id
+      LEFT JOIN swipes
+      ON swipes.potential_restaurant_id = potential_restaurants.id
+      WHERE potential_restaurants.plan_id = ?
+      AND swipes.user_id IS NULL OR swipes.user_id != ?",
+      self.id,
+      user.id
+    ]);
+
+    current_users = PotentialRestaurant.find_by_sql([
+     "SELECT *
+      FROM potential_restaurants
+      JOIN restaurants
+      ON potential_restaurants.restaurant_id = restaurants.id
+      LEFT JOIN swipes
+      ON swipes.potential_restaurant_id = potential_restaurants.id
+      WHERE potential_restaurants.plan_id = ?
+      AND swipes.user_id = ?",
+      self.id,
+      user.id
+    ]);
+    current_user_pr_swipe_ids = current_users.map(&:id)
+    not_current_users.select do |potential_restaurant|
+      !current_user_pr_swipe_ids.include? potential_restaurant.id
+    end
   end
 
 end
