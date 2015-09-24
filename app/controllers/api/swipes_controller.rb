@@ -22,7 +22,7 @@ class Api::SwipesController < ApplicationController
       end
       render json: @swipe
     else
-      render json: @swipe.errors.full_messages
+      render json: @swipe.errors.full_messages, status: :unprocessable_entity
     end
   end
 
