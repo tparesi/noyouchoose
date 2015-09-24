@@ -20,8 +20,4 @@ class PotentialRestaurant < ActiveRecord::Base
     swipes.count == plan.users.count && !swipes.pluck(:swipe_right?).any? {|val| val == false}
   end
 
-  def unswiped(user)
-    !swipes.find_by(user_id: user.id)
-  end
-
 end
