@@ -11,7 +11,8 @@
 #
 
 class Swipe < ActiveRecord::Base
-  validates :potential_restaurant_id, :user_id, :swipe_right?, presence: true
+  validates :potential_restaurant_id, :user_id, presence: true
+  validates :swipe_right?, inclusion: {in: [true, false]}
 
   belongs_to :potential_restaurant
   belongs_to :user
