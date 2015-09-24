@@ -7,5 +7,5 @@ json.users @plan.users do |user|
 end
 
 json.restaurants @plan.unswiped_restaurants(current_user).each do |potential_restaurant|
-  json.id potential_restaurant.restaurant.id
+  json.id potential_restaurant.restaurant_id
 end
