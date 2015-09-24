@@ -42,15 +42,5 @@ class User < ActiveRecord::Base
       User.find_by(uid: friend["id"])
     end.compact
   end
-
-  def unswiped_restaurants(plan)
-    unswiped = []
-    plan.potential_restaurants.each do |restaurant|
-      swiped = restaurant.swipes.find_by(user_id: id)
-      unswiped << restaurant unless swiped
-    end
-
-    unswiped
-  end
-
+  
 end

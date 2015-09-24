@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
   def login_user!(user)
     @current_user = user
-    @session = user.sessions.create
+    @session = user.sessions.create!
     session[:session_token] = @session.token
   end
 end
