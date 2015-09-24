@@ -14,7 +14,7 @@ class Api::PlansController < ApplicationController
   end
 
   def show
-    @plan = Plan.find(params[:id])
+    @plan = Plan.includes(potential_restaurants: [:restaurant, :swipes]).find(params[:id])
     @unswiped_restaurants = current_user.unswiped_restaurants(@plan)
     render :show
   end
