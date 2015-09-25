@@ -38,7 +38,7 @@
         counter++; if (counter>=frames) counter = 0;
     }, 100);
   });
-  
+
   $(document).ajaxStop(function() {
     $("body").removeClass("loading");
     clearInterval(spinModal);
