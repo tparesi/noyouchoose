@@ -22,6 +22,7 @@ NYC.Views.ShowPlan = Backbone.CompositeView.extend({
       $modal.find(".modal-message").text("Yay! You have a match. You both want to eat at " + data.restaurant_name);
       var $img = $("<img>").attr("src", data.restaurant_img);
       $modal.find(".modal-image").html($img);
+      $(".match-count a").text(parseInt($(".match-count a").text()) + 1)
       window.setTimeout(function() {
         $modal.removeClass("is-open");
         $modalScreen.removeClass("is-open");
