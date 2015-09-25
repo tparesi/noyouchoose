@@ -1,7 +1,7 @@
 <header class="header">
   <h1 class="header-text"> <%= plan.escape("name") %> </h1>
 
-  <div class="match-count"> <%= plan.matches().length %> </div>
+  <div class="match-count"><a href="#/plans/<%= plan.id %>/matches"><%= plan.matches().length %></a></div>
 
   <div class="invited-friends">
     <ul class="invitees">
