@@ -20,7 +20,7 @@ NYC.Routers.Router = Backbone.Router.extend({
           this.loginPage();
         }
       }.bind(this)
-    })
+    });
   },
 
   planIndex: function () {
