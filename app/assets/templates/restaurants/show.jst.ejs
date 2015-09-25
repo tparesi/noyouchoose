@@ -11,14 +11,14 @@
     </li>
 
     <li>
-      <%= restaurant.get("categories") && restaurant.get("categories").join(", ") %>
+      <%= restaurant.categories().join(", ") %>
     </li>
 
     <li>
       <%= restaurant.get("rating") %> stars
     </li>
 
-    <% restaurant.get("address") && restaurant.get("address").forEach(function(line) { %>
+    <% restaurant.address().forEach(function(line) { %>
       <li><%= line %></li>
     <% }) %>
 
