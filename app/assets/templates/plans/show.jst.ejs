@@ -1,14 +1,19 @@
-<h1 class="header header-text"> <%= plan.escape("name") %> </h1>
+<header class="header">
+  <h1 class="header-text"> <%= plan.escape("name") %> </h1>
 
-<div class="invited-friends">
-<ul class="invitees">
-  <% this.model.users().each(function(user) { %>
-    <li class="invitee">
-      <%= user.escape("name") %>
-    </li>
-  <% }) %>
-</ul>
-</div>
+  <div class="match-count"> <%= plan.matches().length %> </div>
+
+  <div class="invited-friends">
+    <ul class="invitees">
+      <% this.model.users().each(function(user) { %>
+        <li class="invitee">
+          <%= user.escape("name") %>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+
+</header>
 
 <ul class="invited"></ul>
 <ul class="pending-restaurants"></ul>

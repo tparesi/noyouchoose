@@ -84,6 +84,17 @@ purple: #a24664
   font-style: italic;
 }
 
+.match-count {
+  position: relative;
+  top: -30px;
+  left: 460px;
+  background: white;
+  width: 20px;
+  border: 1px solid white;
+  border-radius: 20px;
+  text-align: center;
+}
+
 .detail-plan-form {
   padding: 10px 20px;
 }
@@ -367,7 +378,7 @@ purple: #a24664
   background: rgba( 255, 255, 255, .9 );
 }
 
-.modal-image {
+.loading-modal-image {
   position: fixed;
   top: 0;
   bottom: 0;

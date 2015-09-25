@@ -8,6 +8,11 @@ NYC.Models.Plan = Backbone.Model.extend({
       delete response.users;
     }
 
+    if (response.matches) {
+      this.matches().set(response.matches);
+      delete response.matches;
+    }
+
     return response;
   },
 
@@ -30,6 +35,14 @@ NYC.Models.Plan = Backbone.Model.extend({
     }
 
     return this._users;
-  }
+  },
+
+  matches: function () {
+    if (!this._matches) {
+      this._matches = new NYC.Collections.Restaurants();
+    }
+
+    return this._matches;
+  },
 
 });
