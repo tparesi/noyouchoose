@@ -9,3 +9,7 @@ end
 json.restaurants @plan.unswiped_restaurants(current_user).each do |potential_restaurant|
   json.id potential_restaurant.restaurant_id
 end
+
+json.matches @plan.matches do |match|
+  json.id match.restaurant_id
+end
