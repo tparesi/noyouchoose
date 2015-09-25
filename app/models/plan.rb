@@ -28,31 +28,25 @@ class Plan < ActiveRecord::Base
 
   end
 
-  def swiped(user)
-    PotentialRestaurant.find_by_sql([
-     "SELECT *
-      FROM potential_restaurants
-      JOIN swipes
-      ON swipes.potential_restaurant_id = potential_restaurants.id
-      WHERE potential_restaurants.plan_id = ?
-      AND swipes.user_id = ?",
-      self.id,
-      user.id
-    ])
-  end
-
   def unswiped_restaurants(user)
-    users_swipes = swiped(user)
-    return potential_restaurants if users_swipes.map(&:id).empty?
 
     PotentialRestaurant.find_by_sql([
       "SELECT *
       FROM potential_restaurants
       WHERE potential_restaurants.plan_id = ?
-      AND potential_restaurants.id <> ALL (ARRAY[?])",
-      self.id,
-      users_swipes.map(&:potential_restaurant_id)
+      AND potential_restaurants.id NOT IN (
+        SELECT potential_restaurants.id
+         FROM potential_restaurants
+         JOIN swipes
+         ON swipes.potential_restaurant_id = potential_restaurants.id
+         WHERE potential_restaurants.plan_id = ?
+         AND swipes.user_id = ?
+        )",
+        self.id,
+        self.id,
+        user.id
     ]);
+
   end
 
 end
