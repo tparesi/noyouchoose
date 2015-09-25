@@ -9,6 +9,7 @@ NYC.Routers.Router = Backbone.Router.extend({
     "_=_": "sanitize",
     "plans/new": "newPlan",
     "plans/:id": "showPlan",
+    "plans/:id/matches": "showMatches",
   },
 
   homepage: function() {
@@ -45,6 +46,12 @@ NYC.Routers.Router = Backbone.Router.extend({
     var plan = new NYC.Models.Plan({id: id});
     var showPlan = new NYC.Views.ShowPlan({ model: plan });
     this._swapView(showPlan);
+  },
+
+  showMatches: function(id) {
+    var plan = new NYC.Models.Plan({id: id});
+    var showMatches = new NYC.Views.ShowMatches({ model: plan });
+    this._swapView(showMatches);
   },
 
   sanitize: function() {
