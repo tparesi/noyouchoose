@@ -29,7 +29,6 @@ class Plan < ActiveRecord::Base
   end
 
   def unswiped_restaurants(user)
-
     PotentialRestaurant.find_by_sql([
       "SELECT *
       FROM potential_restaurants
@@ -46,7 +45,6 @@ class Plan < ActiveRecord::Base
         self.id,
         user.id
     ]);
-
   end
 
 end
