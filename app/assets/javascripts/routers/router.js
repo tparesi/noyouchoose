@@ -48,7 +48,7 @@ NYC.Routers.Router = Backbone.Router.extend({
   },
 
   sanitize: function() {
-    Backbone.history.navigate("#")
+    Backbone.history.navigate("#", {trigger: true});
   },
 
   _swapView: function(view) {
