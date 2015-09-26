@@ -5,8 +5,8 @@ NYC.Views.ShowPlan = Backbone.CompositeView.extend({
 
   initialize: function() {
     this.model.fetch();
-
     this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model.matches(), "sync", this.renderMatchCount);
     this.listenTo(this.model, "sync", this.subscribeToChannel);
     this.bind('swipe', this.render);
   },
@@ -25,8 +25,12 @@ NYC.Views.ShowPlan = Backbone.CompositeView.extend({
         $modal.removeClass("is-open");
         $modalScreen.removeClass("is-open");
       }, 500);
-      this.model.fetch();
+      this.model.matches().fetch();
     }.bind(this));
+  },
+
+  renderMatchCount: function() {
+    this.$('.match-count a').html(this.model.matches().size());
   },
 
   render: function() {

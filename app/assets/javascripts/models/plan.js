@@ -39,7 +39,7 @@ NYC.Models.Plan = Backbone.Model.extend({
 
   matches: function () {
     if (!this._matches) {
-      this._matches = new NYC.Collections.Restaurants();
+      this._matches = new NYC.Collections.Matches({plan: this});
     }
 
     return this._matches;
