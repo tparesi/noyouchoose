@@ -25,7 +25,8 @@ class Api::PlansController < ApplicationController
   end
 
   def matches
-    @matches = Plan.find(params[:id]).matches
+    @matched_restaurant_ids = Plan.find(params[:id]).matches.map(&:restaurant_id)
+    @restaurants = Restaurant.where('id IN (?)', @matched_restaurant_ids)
     render :matches
   end
 
