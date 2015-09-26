@@ -24,6 +24,11 @@ class Api::PlansController < ApplicationController
     render :index
   end
 
+  def matches
+    @matches = Plan.find(params[:id]).matches
+    render :matches
+  end
+
   private
     def plan_params
       params.require(:plan).permit(:name, :time, :location, categories: [], friend_ids: [])

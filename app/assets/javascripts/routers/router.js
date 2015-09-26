@@ -50,7 +50,8 @@ NYC.Routers.Router = Backbone.Router.extend({
 
   showMatches: function(id) {
     var plan = new NYC.Models.Plan({id: id});
-    var showMatches = new NYC.Views.ShowMatches({ model: plan });
+    var matches = new NYC.Collections.Matches({plan: plan})
+    var showMatches = new NYC.Views.ShowMatches({ model: plan, collection: matches });
     this._swapView(showMatches);
   },
 
