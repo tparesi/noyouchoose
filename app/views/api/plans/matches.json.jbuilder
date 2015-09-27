@@ -1,5 +1,4 @@
 json.array! @restaurants do |restaurant|
-  data = restaurant.yelp_data
-  json.name data[:name]
-  json.image_url = data[:image_url]
+  json.name restaurant[:name]
+  json.image_url = restaurant[:image_url]
 end
