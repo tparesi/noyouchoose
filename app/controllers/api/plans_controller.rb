@@ -26,7 +26,7 @@ class Api::PlansController < ApplicationController
 
   def matches
     matched_restaurant_ids = Match.where('plan_id = ?', params[:id]).map(&:restaurant_id)
-    @restaurants = Restaurant.where('id IN (?)', matched_restaurant_ids)
+    @restaurants = Restaurant.where('id IN (?)', matched_restaurant_ids).map(&:yelp_data)
     render :matches
   end
 
