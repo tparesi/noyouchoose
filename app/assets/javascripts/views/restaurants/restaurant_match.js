@@ -7,8 +7,6 @@ NYC.Views.RestaurantMatch = Backbone.View.extend({
   className: "restaurant-match",
 
   initialize: function() {
-    this.model.fetch();
-    
     this.listenTo(this.model, "sync", this.render);
   },
 

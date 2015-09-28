@@ -5,8 +5,8 @@ NYC.Views.ShowPlan = Backbone.CompositeView.extend({
 
   initialize: function() {
     this.model.fetch();
-
     this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model.matches(), "sync", this.renderMatchCount);
     this.listenTo(this.model, "sync", this.subscribeToChannel);
     this.bind('swipe', this.render);
   },
@@ -16,17 +16,21 @@ NYC.Views.ShowPlan = Backbone.CompositeView.extend({
   subscribeToChannel: function() {
     var channel = window.pusher.subscribe('matches_for_plan_' + this.model.id);
     channel.bind('new_match', function(data) {
-      var match = new NYC.Models.Match(data)
-      var matchModal = new NYC.Views.MatchModal({
-        el: $('.modal'),
-        $el: $(".modal"),
-        model: match
-      });
-      matchModal.render();
-
-      //TODO: ask Lily why this fetch was here
-      // this.model.fetch();
+      var $modal = $('.modal').addClass("is-open");
+      var $modalScreen = $(".modal-screen").addClass("is-open");
+      $modal.find(".modal-message").text("Yay! You have a match. You both want to eat at " + data.restaurant_name);
+      var $img = $("<img>").attr("src", data.restaurant_img);
+      $modal.find(".modal-image").html($img);
+      window.setTimeout(function() {
+        $modal.removeClass("is-open");
+        $modalScreen.removeClass("is-open");
+      }, 500);
+      this.model.matches().fetch();
     }.bind(this));
+  },
+
+  renderMatchCount: function() {
+    this.$('.match-count a').html(this.model.matches().size());
   },
 
   render: function() {

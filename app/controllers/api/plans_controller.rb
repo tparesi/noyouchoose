@@ -24,6 +24,12 @@ class Api::PlansController < ApplicationController
     render :index
   end
 
+  def matches
+    matched_restaurant_ids = Match.where('plan_id = ?', params[:id]).map(&:restaurant_id)
+    @restaurants = Restaurant.where('id IN (?)', matched_restaurant_ids).map(&:yelp_data)
+    render :matches
+  end
+
   private
     def plan_params
       params.require(:plan).permit(:name, :time, :location, categories: [], friend_ids: [])

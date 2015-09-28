@@ -2,17 +2,11 @@ NYC.Views.ShowMatches = Backbone.CompositeView.extend({
   template: JST["plans/matches"],
 
   initialize: function() {
-    this.model.fetch();
-
-    this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.collection, "add", this.addRestaurantView);
   },
 
   render: function () {
-    var content = this.template();
-    this.$el.html(content);
-    this.model.matches().each(function (restaurant) {
-      this.addRestaurantView(restaurant);
-    }.bind(this));
+    this.$el.html(this.template());
     return this;
   },
 
