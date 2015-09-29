@@ -8,6 +8,7 @@ NYC.Views.NewPlan = Backbone.CompositeView.extend({
 
   makePlan: function(event) {
     event.preventDefault();
+    NYC.startLoader();
     var $detailPlan = this.$(".detail-plan-form");
     var $inviteFriends = this.$(".invite-friends-form");
     var $filterRestaurants = this.$(".filter-restaurant-form");
@@ -16,9 +17,11 @@ NYC.Views.NewPlan = Backbone.CompositeView.extend({
     var plan = new NYC.Models.Plan();
     plan.save(attrs, {
       success: function() {
+        NYC.stopLoader();
         Backbone.history.navigate("#/plans/" + plan.id, {trigger: true});
       },
       error: function(model, response, options) {
+        NYC.stopLoader();
         alert(response.responseJSON.join(", "));
       }
     });
